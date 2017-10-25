@@ -82,6 +82,6 @@ public class PCM {
 		this.products = products;
 	}
 public void testCommit() {
-		
+		return;
 	}
 }
