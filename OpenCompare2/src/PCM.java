@@ -66,7 +66,7 @@ public class PCM {
 	public String getPrimaryFeatureId() {
 		return primaryFeatureId;
 	}
-	public void setPrimaryFeatureId(String primaryFeatureId) {
+	public void setPrimaryFeatureId(String primaryFeatureIyd) {
 		this.primaryFeatureId = primaryFeatureId;
 	}
 	public Collection<Feature> getFeatures() {
