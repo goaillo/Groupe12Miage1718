@@ -13,7 +13,7 @@ public class PCM {
 	private Collection<Feature> features;
 	private Collection<Product> products;
 	
-	public void testCommit1() {
+	public void testCommit() {
 		
 	}
 }
