@@ -12,4 +12,8 @@ public class PCM {
 	private String primaryFeatureId;
 	private Collection<Feature> features;
 	private Collection<Product> products;
+	
+	public void testCommit() {
+		
+	}
 }
