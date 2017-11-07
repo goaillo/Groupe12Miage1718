@@ -1,3 +1,4 @@
+package classes;
 public class Feature {
 	private String id;
 	private String name;

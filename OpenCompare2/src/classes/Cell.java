@@ -1,3 +1,4 @@
+package classes;
 public class Cell {
 	private String featureId;
 	private String type;
