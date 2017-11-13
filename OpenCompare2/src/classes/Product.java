@@ -5,6 +5,13 @@ import java.util.Collection;
 public class Product {
 	private String id;
 	private Collection<Cell> cells;
+	
+	public Product(String id, Collection<Cell> cells) {
+		super();
+		this.id = id;
+		this.cells = cells;
+	}
+	
 	public String getId() {
 		return id;
 	}

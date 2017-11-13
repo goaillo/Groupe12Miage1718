@@ -4,7 +4,17 @@ public class Cell {
 	private String type;
 	private boolean isPartial;
 	private String unit;
-	private String value;
+	private Object value;
+	
+	public Cell(String featureId, String type, boolean isPartial, String unit, Object value) {
+		super();
+		this.featureId = featureId;
+		this.type = type;
+		this.isPartial = isPartial;
+		this.unit = unit;
+		this.value = value;
+	}
+	
 	public String getFeatureId() {
 		return featureId;
 	}
@@ -29,10 +39,10 @@ public class Cell {
 	public void setUnit(String unit) {
 		this.unit = unit;
 	}
-	public String getValue() {
+	public Object getValue() {
 		return value;
 	}
-	public void setValue(String value) {
+	public void setValue(Object value) {
 		this.value = value;
 	}
 	

@@ -2,13 +2,14 @@ package classes;
 
 import java.util.Collection;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 public class PCM {
 	private String id;
 	private String name;
-	private int featureIdGen;
-	private int productIdGen;
+	private long featureIdGen;
+	private long productIdGen;
 	private String description;
 	private String license;
 	private String source;
@@ -17,7 +18,9 @@ public class PCM {
 	private Collection<Feature> features;
 	private Collection<Product> products;
 	
-	public PCM (String _id, String _name, int _featureIdGen, int _productIdGen, String _description, String _license,
+	public PCM() {}
+	
+	public PCM (String _id, String _name, long _featureIdGen, long _productIdGen, String _description, String _license,
 				String _source, String _author, String _primaryFeatureId, Collection<Feature> _features, Collection<Product> _products ){
 		
 		this.id = _id;
@@ -45,16 +48,16 @@ public class PCM {
 	public void setName(String _name) {
 		this.name = _name;
 	}
-	public int getFeatureIdGen() {
+	public long getFeatureIdGen() {
 		return featureIdGen;
 	}
-	public void setFeatureIdGen(int _featureIdGen) {
+	public void setFeatureIdGen(long _featureIdGen) {
 		this.featureIdGen = _featureIdGen;
 	}
-	public int getProductIdGen() {
+	public long getProductIdGen() {
 		return productIdGen;
 	}
-	public void setProductIdGen(int _productIdGen) {
+	public void setProductIdGen(long _productIdGen) {
 		this.productIdGen = _productIdGen;
 	}
 	public String getDescription() {
@@ -98,6 +101,11 @@ public class PCM {
 	}
 	public void setProducts(Collection<Product> _products) {
 		this.products = _products;
+	}
+	
+	@Override
+	public String toString() {
+		return "id:"+id+"\nname:"+name+"\nfeatureIdGen:"+Long.toString(featureIdGen)+"\nproductIdGen:"+Long.toString(productIdGen)+"\ndescription:"+description+"\nlicense:"+license+"\nsource:"+source+"\nprimaryFeatureId:"+primaryFeatureId;
 	}
 
 }
