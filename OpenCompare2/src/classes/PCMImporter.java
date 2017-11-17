@@ -9,21 +9,20 @@ import java.io.InputStream;
 import org.apache.commons.io.IOUtils;
 
 public class PCMImporter {
-	
 	public String JsonParse(String _fileName) {
 		InputStream is;
 		String returnValue = "";
+		
 		try {
 			is = new FileInputStream(this.importFile(_fileName));
 			returnValue = IOUtils.toString(is);
 		} catch (FileNotFoundException e) {
-			System.out.println("ERREUR :  le fichier "+ _fileName +"n'a pas Ã©tÃ© trouvÃ©");
+			System.out.println("ERREUR :  le fichier "+ _fileName +" n'a pas été trouvé");
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
 		
 		return returnValue;
-		
 	}
 	
 	private File importFile(String _fileName){

@@ -93,11 +93,29 @@ public class PCM {
 	public Collection<Feature> getFeatures() {
 		return new ArrayList<Feature>(features);
 	}
+	public int getFeaturesCount() {
+		return features.size();
+	}
+	public void addFeature(Feature f) {
+		features.add(f);
+	}
+	public void removeFeature(Feature f) {
+		features.remove(f);
+	}
 	public void setFeatures(Collection<Feature> _features) {
 		this.features = _features;
 	}
 	public Collection<Product> getProducts() {
 		return new ArrayList<Product>(products);
+	}
+	public int getProductsCount() {
+		return products.size();
+	}
+	public void addProduct(Product p) {
+		products.add(p);
+	}
+	public void removeProduct(Product p) {
+		products.remove(p);
 	}
 	public void setProducts(Collection<Product> _products) {
 		this.products = _products;
@@ -105,7 +123,7 @@ public class PCM {
 	
 	@Override
 	public String toString() {
-		return "id:"+id+"\nname:"+name+"\nfeatureIdGen:"+Long.toString(featureIdGen)+"\nproductIdGen:"+Long.toString(productIdGen)+"\ndescription:"+description+"\nlicense:"+license+"\nsource:"+source+"\nprimaryFeatureId:"+primaryFeatureId;
+		return "{\n\tid : " + id + ",\n\tname : " + name + ",\n\tfeatureIdGen : " + Long.toString(featureIdGen) + ",\n\tproductIdGen : " + Long.toString(productIdGen) + ",\n\tdescription : " + description + ",\n\tlicense : " + license + ",\n\tsource : " + source + ",\n\tprimaryFeatureId : " + primaryFeatureId + ",\n\tfeatures : " + features + ",\n\tproducts : " + products + "\n}";
 	}
 
 }

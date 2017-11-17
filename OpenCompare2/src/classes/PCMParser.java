@@ -19,6 +19,7 @@ public class PCMParser {
 
 	public void transformToJavaObject() {
 		JSONParser parser = new JSONParser();
+		
 		try {
 			JSONObject o = (JSONObject) parser.parse(jsonString);
 			result.set_id((String) o.get("_id"));
@@ -35,8 +36,7 @@ public class PCMParser {
 			result.setFeatures(getFeaturesArrayList((JSONArray) o.get("features")));
 
 			// Products
-			 result.setProducts(getProductsArrayList((JSONArray) o.get("products")));
-			
+			result.setProducts(getProductsArrayList((JSONArray) o.get("products")));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

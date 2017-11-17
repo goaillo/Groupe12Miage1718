@@ -18,33 +18,45 @@ public class Cell {
 	public String getFeatureId() {
 		return featureId;
 	}
+	
 	public void setFeatureId(String featureId) {
 		this.featureId = featureId;
 	}
+	
 	public String getType() {
 		return type;
 	}
+	
 	public void setType(String type) {
 		this.type = type;
 	}
+	
 	public boolean isPartial() {
 		return isPartial;
 	}
+	
 	public void setPartial(boolean isPartial) {
 		this.isPartial = isPartial;
 	}
+	
 	public String getUnit() {
 		return unit;
 	}
+	
 	public void setUnit(String unit) {
 		this.unit = unit;
 	}
+	
 	public Object getValue() {
 		return value;
 	}
+	
 	public void setValue(Object value) {
 		this.value = value;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "{\n\t\t\tfeatureId : " + featureId + ",\n\t\t\ttype : " + type + ",\n\t\t\tisPartial : " + Boolean.toString(isPartial) + ",\n\t\t\tunit : " + unit + ",\n\t\t\tvalue : " + value + "\n\t\t}";
+	}
 }
