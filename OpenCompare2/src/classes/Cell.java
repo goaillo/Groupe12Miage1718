@@ -1,5 +1,8 @@
 package classes;
-public class Cell {
+
+import org.json.simple.JSONObject;
+
+public class Cell implements ConvertibleToJSONObject {
 	private String featureId;
 	private String type;
 	private boolean isPartial;
@@ -56,7 +59,20 @@ public class Cell {
 	}
 	
 	@Override
+	public JSONObject toJSONObject() {
+		JSONObject result = new JSONObject();
+		
+		result.put("featureId", featureId);
+		result.put("type", type);
+		result.put("isPartial", isPartial);
+		result.put("unit", unit);
+		result.put("value", value);
+		
+		return result;
+	}
+	
+	@Override
 	public String toString() {
-		return "{\n\t\t\tfeatureId : " + featureId + ",\n\t\t\ttype : " + type + ",\n\t\t\tisPartial : " + Boolean.toString(isPartial) + ",\n\t\t\tunit : " + unit + ",\n\t\t\tvalue : " + value + "\n\t\t}";
+		return null;//return "{\n\t\t\tfeatureId : " + featureId + ",\n\t\t\ttype : " + type + ",\n\t\t\tisPartial : " + Boolean.toString(isPartial) + ",\n\t\t\tunit : " + unit + ",\n\t\t\tvalue : " + value + "\n\t\t}";
 	}
 }

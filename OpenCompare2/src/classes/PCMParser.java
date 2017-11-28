@@ -14,10 +14,11 @@ public class PCMParser {
 	
 	public PCMParser(String jsonString) {
 		this.jsonString = jsonString;
-		result = new PCM();
 	}
 
 	public void transformToJavaObject() {
+		result = new PCM();
+		
 		JSONParser parser = new JSONParser();
 		
 		try {

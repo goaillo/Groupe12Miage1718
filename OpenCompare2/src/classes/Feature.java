@@ -1,5 +1,8 @@
 package classes;
-public class Feature {
+
+import org.json.simple.JSONObject;
+
+public class Feature implements ConvertibleToJSONObject {
 	private String id;
 	private String name;
 	private String type;
@@ -32,6 +35,17 @@ public class Feature {
 	
 	public void setType(String type) {
 		this.type = type;
+	}
+	
+	@Override
+	public JSONObject toJSONObject() {
+		JSONObject result = new JSONObject();
+		
+		result.put("id", id);
+		result.put("name", name);
+		result.put("type", type);
+		
+		return result;
 	}
 	
 	@Override

@@ -3,6 +3,8 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import org.apache.commons.io.IOUtils;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 import classes.*;
 
 public class Execution {
@@ -14,6 +16,6 @@ public class Execution {
         
         PCMParser p = new PCMParser(jsonTxt);
         p.transformToJavaObject();
-        System.out.println(p.getPCMJavaObject());
+        System.out.println(p.getPCMJavaObject().toString());
 	}
 }

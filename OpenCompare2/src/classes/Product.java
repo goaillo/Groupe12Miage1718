@@ -2,7 +2,10 @@ package classes;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Product {
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+public class Product implements ConvertibleToJSONObject {
 	private String id;
 	private Collection<Cell> cells;
 	
@@ -38,6 +41,23 @@ public class Product {
 	
 	public void removeCell(Cell cell) {
 		cells.remove(cell);
+	}
+
+	@Override
+	public JSONObject toJSONObject() {
+		JSONObject result = new JSONObject();
+		
+		result.put("id", id);
+		
+		JSONArray cellsToJsonArray = new JSONArray();
+		
+		for (Cell c : cells) {
+			cellsToJsonArray.add(c.toJSONObject());
+		}
+		
+		result.put("cells", cellsToJsonArray);
+		
+		return result;
 	}
 	
 	@Override

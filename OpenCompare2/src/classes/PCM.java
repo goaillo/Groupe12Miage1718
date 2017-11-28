@@ -1,12 +1,16 @@
 package classes;
 
-import java.util.Collection;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
-public class PCM {
-	private String id;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+public class PCM implements ConvertibleToJSONObject {
+	private String _id;
 	private String name;
 	private long featureIdGen;
 	private long productIdGen;
@@ -23,7 +27,7 @@ public class PCM {
 	public PCM (String _id, String _name, long _featureIdGen, long _productIdGen, String _description, String _license,
 				String _source, String _author, String _primaryFeatureId, Collection<Feature> _features, Collection<Product> _products ){
 		
-		this.id = _id;
+		this._id = _id;
 		this.name = _name;
 		this.featureIdGen = _featureIdGen;
 		this.productIdGen = _productIdGen;
@@ -37,10 +41,10 @@ public class PCM {
 		
 	}
 	public String get_id() {
-		return id;
+		return _id;
 	}
 	public void set_id(String _id) {
-		this.id = _id;
+		this._id = _id;
 	}
 	public String getName() {
 		return name;
@@ -122,8 +126,42 @@ public class PCM {
 	}
 	
 	@Override
-	public String toString() {
-		return "{\n\tid : " + id + ",\n\tname : " + name + ",\n\tfeatureIdGen : " + Long.toString(featureIdGen) + ",\n\tproductIdGen : " + Long.toString(productIdGen) + ",\n\tdescription : " + description + ",\n\tlicense : " + license + ",\n\tsource : " + source + ",\n\tprimaryFeatureId : " + primaryFeatureId + ",\n\tfeatures : " + features + ",\n\tproducts : " + products + "\n}";
+	public JSONObject toJSONObject() {		
+		JSONObject result = new JSONObject();
+		result.put("_id", _id);
+		result.put("name", name);
+		result.put("featureIdGen", featureIdGen);
+		result.put("productIdGen", productIdGen);
+		result.put("description", description);
+		result.put("license", license);
+		result.put("source", source);
+		result.put("author", author);
+		result.put("primaryFeatureId", primaryFeatureId);
+		
+		// Features
+		JSONArray featuresToJSONArray = new JSONArray();
+		
+		for (Feature f : features) {
+			featuresToJSONArray.add(f.toJSONObject());
+		}
+		
+		result.put("features", featuresToJSONArray);
+		
+		// Products
+		JSONArray productsToJSONArray = new JSONArray();
+		
+		for (Product p : products) {
+			productsToJSONArray.add(p.toJSONObject());
+		}
+		
+		result.put("products", productsToJSONArray);
+		
+		return result;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "bite";
+		//return "{\n\tid : " + _id + ",\n\tname : " + name + ",\n\tfeatureIdGen : " + Long.toString(featureIdGen) + ",\n\tproductIdGen : " + Long.toString(productIdGen) + ",\n\tdescription : " + description + ",\n\tlicense : " + license + ",\n\tsource : " + source + ",\n\tprimaryFeatureId : " + primaryFeatureId + ",\n\tfeatures : " + features + ",\n\tproducts : " + products + "\n}";
+	}
 }
