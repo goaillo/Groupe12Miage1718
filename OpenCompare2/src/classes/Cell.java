@@ -73,6 +73,6 @@ public class Cell implements ConvertibleToJSONObject {
 	
 	@Override
 	public String toString() {
-		return null;//return "{\n\t\t\tfeatureId : " + featureId + ",\n\t\t\ttype : " + type + ",\n\t\t\tisPartial : " + Boolean.toString(isPartial) + ",\n\t\t\tunit : " + unit + ",\n\t\t\tvalue : " + value + "\n\t\t}";
+		return "{\n\t\t\tfeatureId : " + featureId + ",\n\t\t\ttype : " + type + ",\n\t\t\tisPartial : " + Boolean.toString(isPartial) + ",\n\t\t\tunit : " + unit + ",\n\t\t\tvalue : " + value + "\n\t\t}";
 	}
 }

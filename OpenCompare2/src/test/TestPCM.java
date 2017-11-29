@@ -1,12 +1,12 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.Scanner;
 
-import org.apache.commons.io.IOUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.junit.Test;
@@ -17,9 +17,16 @@ import classes.PCMParser;
 public class TestPCM {
 	@Test
 	public void test() throws Exception {
-		// Récupération du contenu d'un fichier au format JSON que l'on stocke dans jsonTxt
-		InputStream is = new FileInputStream(new File("jsonFiles/premierJson.txt"));
-        String jsonTxt = IOUtils.toString(is);
+		// Demande de saisie de l'id d'une PCM au clavier
+		Scanner sc = new Scanner(System.in);
+		System.out.print("ID de la PCM : ");
+		String pcmId = sc.nextLine();
+		
+		// Récupération du JSON correspondant à la PCM qui possède l'id renseigné
+		URL url = new URL("https://opencompare.org/api/" + pcmId);
+        BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+
+        String jsonTxt = in.readLine();
         
         // Transformation du JSON contenu dans jsonTxt en un objet de type PCM
         PCMParser parser = new PCMParser(jsonTxt);

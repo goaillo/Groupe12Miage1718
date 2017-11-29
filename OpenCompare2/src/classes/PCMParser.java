@@ -17,30 +17,35 @@ public class PCMParser {
 	}
 
 	public void transformToJavaObject() {
-		result = new PCM();
-		
-		JSONParser parser = new JSONParser();
-		
 		try {
-			JSONObject o = (JSONObject) parser.parse(jsonString);
-			result.set_id((String) o.get("_id"));
-			result.setName((String) o.get("name"));
-			result.setFeatureIdGen((long) o.get("featureIdGen"));
-			result.setProductIdGen((long) o.get("productIdGen"));
-			result.setDescription((String) o.get("description"));
-			result.setLicense((String) o.get("license"));
-			result.setSource((String) o.get("source"));
-			result.setAuthor((String) o.get("author"));
-			result.setPrimaryFeatureId((String) o.get("primaryFeatureId"));
+			result = new PCM();
 			
-			// Features
-			result.setFeatures(getFeaturesArrayList((JSONArray) o.get("features")));
-
-			// Products
-			result.setProducts(getProductsArrayList((JSONArray) o.get("products")));
+			JSONParser parser = new JSONParser();
+			
+			JSONObject o = (JSONObject) parser.parse(jsonString);
+			
+			if (o == null || o.containsKey("error")) {
+				result = null;
+			} else {
+				result.set_id((String) o.get("_id"));
+				result.setName((String) o.get("name"));
+				result.setFeatureIdGen((long) o.get("featureIdGen"));
+				result.setProductIdGen((long) o.get("productIdGen"));
+				result.setDescription((String) o.get("description"));
+				result.setLicense((String) o.get("license"));
+				result.setSource((String) o.get("source"));
+				result.setAuthor((String) o.get("author"));
+				result.setPrimaryFeatureId((String) o.get("primaryFeatureId"));
+				
+				// Features
+				result.setFeatures(getFeaturesArrayList((JSONArray) o.get("features")));
+	
+				// Products
+				result.setProducts(getProductsArrayList((JSONArray) o.get("products")));
+			}
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			result = null;
 		}
 	}
 

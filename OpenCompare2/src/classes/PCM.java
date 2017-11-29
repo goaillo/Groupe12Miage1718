@@ -161,7 +161,6 @@ public class PCM implements ConvertibleToJSONObject {
 	
 	@Override
 	public String toString() {
-		return "bite";
-		//return "{\n\tid : " + _id + ",\n\tname : " + name + ",\n\tfeatureIdGen : " + Long.toString(featureIdGen) + ",\n\tproductIdGen : " + Long.toString(productIdGen) + ",\n\tdescription : " + description + ",\n\tlicense : " + license + ",\n\tsource : " + source + ",\n\tprimaryFeatureId : " + primaryFeatureId + ",\n\tfeatures : " + features + ",\n\tproducts : " + products + "\n}";
+		return "{\n\tid : " + _id + ",\n\tname : " + name + ",\n\tfeatureIdGen : " + Long.toString(featureIdGen) + ",\n\tproductIdGen : " + Long.toString(productIdGen) + ",\n\tdescription : " + description + ",\n\tlicense : " + license + ",\n\tsource : " + source + ",\n\tprimaryFeatureId : " + primaryFeatureId + ",\n\tfeatures : " + features + ",\n\tproducts : " + products + "\n}";
 	}
 }
