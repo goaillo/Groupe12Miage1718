@@ -49,6 +49,16 @@ public class Feature implements ConvertibleToJSONObject {
 	}
 	
 	@Override
+	public boolean equals(Object o) {
+		if (o == this) return true;
+		if (o == null) return false;
+		if (!(o instanceof Feature)) return false;
+		
+		Feature f = (Feature) o;
+		return f.id.equals(this.id) && f.name.equals(this.name) && f.type.equals(this.type);
+	}
+	
+	@Override
 	public String toString() {
 		return "{\n\t\tid : " + id + ",\n\t\tname : " + name + ",\n\t\ttype : " + type + "\n\t}";
 	}

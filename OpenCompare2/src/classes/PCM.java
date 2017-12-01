@@ -1,10 +1,7 @@
 package classes;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -25,7 +22,7 @@ public class PCM implements ConvertibleToJSONObject {
 	public PCM() {}
 	
 	public PCM (String _id, String _name, long _featureIdGen, long _productIdGen, String _description, String _license,
-				String _source, String _author, String _primaryFeatureId, Collection<Feature> _features, Collection<Product> _products ){
+				String _source, String _author, String _primaryFeatureId, Collection<Feature> _features, Collection<Product> _products ) {
 		
 		this._id = _id;
 		this.name = _name;
@@ -40,87 +37,139 @@ public class PCM implements ConvertibleToJSONObject {
 		this.products = _products;
 		
 	}
+	
 	public String get_id() {
 		return _id;
 	}
+	
 	public void set_id(String _id) {
 		this._id = _id;
 	}
+	
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String _name) {
 		this.name = _name;
 	}
+	
 	public long getFeatureIdGen() {
 		return featureIdGen;
 	}
+	
 	public void setFeatureIdGen(long _featureIdGen) {
 		this.featureIdGen = _featureIdGen;
 	}
+	
 	public long getProductIdGen() {
 		return productIdGen;
 	}
+	
 	public void setProductIdGen(long _productIdGen) {
 		this.productIdGen = _productIdGen;
 	}
+	
 	public String getDescription() {
 		return description;
 	}
+	
 	public void setDescription(String _description) {
 		this.description = _description;
 	}
+	
 	public String getLicense() {
 		return license;
 	}
+	
 	public void setLicense(String _license) {
 		this.license = _license;
 	}
+	
 	public String getSource() {
 		return source;
 	}
+	
 	public void setSource(String _source) {
 		this.source = _source;
 	}
+	
 	public String getAuthor() {
 		return author;
 	}
+	
 	public void setAuthor(String _author) {
 		this.author = _author;
 	}
+	
 	public String getPrimaryFeatureId() {
 		return primaryFeatureId;
 	}
+	
 	public void setPrimaryFeatureId(String _primaryFeatureId) {
 		this.primaryFeatureId = _primaryFeatureId;
 	}
+	
 	public Collection<Feature> getFeatures() {
 		return new ArrayList<Feature>(features);
 	}
+	
 	public int getFeaturesCount() {
 		return features.size();
 	}
+	
 	public void addFeature(Feature f) {
 		features.add(f);
 	}
+	
+	public void addFeatures(Collection<Feature> features) {
+		for (Feature f : features) {
+			if (!this.features.contains(f)) {
+				this.features.add(f);
+			}
+		}
+	}
+	
 	public void removeFeature(Feature f) {
 		features.remove(f);
 	}
+	
+	public void removeFeatures(Collection<Feature> features) {
+		this.features.removeAll(features);
+	}
+	
 	public void setFeatures(Collection<Feature> _features) {
 		this.features = _features;
 	}
+	
 	public Collection<Product> getProducts() {
 		return new ArrayList<Product>(products);
 	}
+	
 	public int getProductsCount() {
 		return products.size();
 	}
+	
 	public void addProduct(Product p) {
 		products.add(p);
 	}
+	
+	public void addProducts(Collection<Product> products) {
+		for (Product p : products) {
+			if (!this.products.contains(p)) {
+				this.products.add(p);
+			}
+		}
+	}
+	
 	public void removeProduct(Product p) {
 		products.remove(p);
 	}
+	
+	public void removeProducts(Collection<Product> products) {
+		this.products.removeAll(products);
+	}
+	
 	public void setProducts(Collection<Product> _products) {
 		this.products = _products;
 	}
@@ -160,7 +209,19 @@ public class PCM implements ConvertibleToJSONObject {
 	}
 	
 	@Override
+	public boolean equals(Object o) {
+		if (o == this) return true;
+		if (o == null) return false;
+		if (!(o instanceof PCM)) return false;
+		
+		PCM p = (PCM) o;
+		return p._id.equals(this._id) && p.name.equals(this.name) && p.featureIdGen == this.featureIdGen && p.productIdGen == this.productIdGen && p.description.equals(this.description) && p.license.equals(this.license) && p.source.equals(this.source) && p.author.equals(this.author) && p.primaryFeatureId.equals(this.primaryFeatureId) && p.features.equals(this.features) && p.products.equals(this.products);
+	}
+	
+	@Override
 	public String toString() {
+		System.err.println("ATTENTION : la représentation suivante n'est pas une représentation JSON de l'objet PCM. Elle permet juste une lecture facile des données de la PCM.\n");
+		
 		return "{\n\tid : " + _id + ",\n\tname : " + name + ",\n\tfeatureIdGen : " + Long.toString(featureIdGen) + ",\n\tproductIdGen : " + Long.toString(productIdGen) + ",\n\tdescription : " + description + ",\n\tlicense : " + license + ",\n\tsource : " + source + ",\n\tprimaryFeatureId : " + primaryFeatureId + ",\n\tfeatures : " + features + ",\n\tproducts : " + products + "\n}";
 	}
 }

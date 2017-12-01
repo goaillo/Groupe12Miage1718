@@ -61,6 +61,16 @@ public class Product implements ConvertibleToJSONObject {
 	}
 	
 	@Override
+	public boolean equals(Object o) {
+		if (o == this) return true;
+		if (o == null) return false;
+		if (!(o instanceof Product)) return false;
+		
+		Product p = (Product) o;
+		return p.id.equals(this.id) && p.cells.equals(this.cells);
+	}
+	
+	@Override
 	public String toString() {
 		return "{\n\t\tid : " + id + ",\n\t\tcells : " + cells + "\n\t}";
 	}

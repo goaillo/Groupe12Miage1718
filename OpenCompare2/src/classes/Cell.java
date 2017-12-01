@@ -72,6 +72,16 @@ public class Cell implements ConvertibleToJSONObject {
 	}
 	
 	@Override
+	public boolean equals(Object o) {
+		if (o == this) return true;
+		if (o == null) return false;
+		if (!(o instanceof Cell)) return false;
+		
+		Cell c = (Cell) o;
+		return c.featureId.equals(this.featureId) && c.type.equals(this.type) && c.isPartial == this.isPartial && c.unit.equals(this.unit) && c.value.equals(this.value);
+	}
+	
+	@Override
 	public String toString() {
 		return "{\n\t\t\tfeatureId : " + featureId + ",\n\t\t\ttype : " + type + ",\n\t\t\tisPartial : " + Boolean.toString(isPartial) + ",\n\t\t\tunit : " + unit + ",\n\t\t\tvalue : " + value + "\n\t\t}";
 	}

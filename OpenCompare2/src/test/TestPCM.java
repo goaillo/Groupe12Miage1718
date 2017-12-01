@@ -33,10 +33,12 @@ public class TestPCM {
         parser.transformToJavaObject();
         PCM pcm = parser.getPCMJavaObject();
         
-        // Récupération d'un objet de type JSONObject correspondant au JSON contenu dans jsonTxt
-        JSONObject compare = (JSONObject) new JSONParser().parse(jsonTxt);
-        
-        // On récupère la représentation de pcm en JSONObject et on la compare à l'objet compare
-        assertEquals(pcm.toJSONObject(), compare);
+        if (pcm != null) {
+	        // Récupération d'un objet de type JSONObject correspondant au JSON contenu dans jsonTxt
+	        JSONObject compare = (JSONObject) new JSONParser().parse(jsonTxt);
+	        
+	        // On récupère la représentation de pcm en JSONObject et on la compare à l'objet compare
+	        assertEquals(pcm.toJSONObject(), compare);
+        }
 	}
 }
