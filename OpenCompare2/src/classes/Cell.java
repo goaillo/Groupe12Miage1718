@@ -1,5 +1,7 @@
 package classes;
 
+import java.util.Objects;
+
 import org.json.simple.JSONObject;
 
 public class Cell implements ConvertibleToJSONObject {
@@ -78,7 +80,11 @@ public class Cell implements ConvertibleToJSONObject {
 		if (!(o instanceof Cell)) return false;
 		
 		Cell c = (Cell) o;
-		return c.featureId.equals(this.featureId) && c.type.equals(this.type) && c.isPartial == this.isPartial && c.unit.equals(this.unit) && c.value.equals(this.value);
+		return Objects.equals(c.featureId, this.featureId)
+				&& Objects.equals(c.type, this.type)
+				&& c.isPartial == this.isPartial
+				&& Objects.equals(c.unit, this.unit)
+				&& Objects.equals(c.value, this.value);
 	}
 	
 	@Override

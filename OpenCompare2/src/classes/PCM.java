@@ -2,6 +2,7 @@ package classes;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -35,7 +36,6 @@ public class PCM implements ConvertibleToJSONObject {
 		this.primaryFeatureId = _primaryFeatureId;
 		this.features = _features;
 		this.products = _products;
-		
 	}
 	
 	public String get_id() {
@@ -119,14 +119,18 @@ public class PCM implements ConvertibleToJSONObject {
 	}
 	
 	public void addFeature(Feature f) {
-		features.add(f);
+		if (!features.contains(f)) {
+			features.add(f);
+		}
 	}
 	
+	/**
+	 * Ajoute tous les features de la collection passée en paramètre qui ne sont pas déjà présentes dans les features de la PCM
+	 * @param features la liste des features à ajouter
+	 */
 	public void addFeatures(Collection<Feature> features) {
 		for (Feature f : features) {
-			if (!this.features.contains(f)) {
-				this.features.add(f);
-			}
+			addFeature(f);
 		}
 	}
 	
@@ -134,6 +138,10 @@ public class PCM implements ConvertibleToJSONObject {
 		features.remove(f);
 	}
 	
+	/**
+	 * Supprime des features de la PCM tous les features présentes dans la collection passée en paramètre
+	 * @param features la liste des features à supprimer
+	 */
 	public void removeFeatures(Collection<Feature> features) {
 		this.features.removeAll(features);
 	}
@@ -151,14 +159,18 @@ public class PCM implements ConvertibleToJSONObject {
 	}
 	
 	public void addProduct(Product p) {
-		products.add(p);
+		if (!products.contains(p)) {
+			products.add(p);
+		}
 	}
 	
+	/**
+	 * Ajoute tous les products de la collection passée en paramètre qui ne sont pas déjà présents dans les products de la PCM
+	 * @param products la liste des products à ajouter
+	 */
 	public void addProducts(Collection<Product> products) {
 		for (Product p : products) {
-			if (!this.products.contains(p)) {
-				this.products.add(p);
-			}
+			addProduct(p);
 		}
 	}
 	
@@ -166,6 +178,10 @@ public class PCM implements ConvertibleToJSONObject {
 		products.remove(p);
 	}
 	
+	/**
+	 * Supprime des products de la PCM tous les products présents dans la collection passée en paramètre
+	 * @param products la liste des products à supprimer
+	 */
 	public void removeProducts(Collection<Product> products) {
 		this.products.removeAll(products);
 	}
@@ -175,7 +191,7 @@ public class PCM implements ConvertibleToJSONObject {
 	}
 	
 	@Override
-	public JSONObject toJSONObject() {		
+	public JSONObject toJSONObject() {
 		JSONObject result = new JSONObject();
 		result.put("_id", _id);
 		result.put("name", name);
@@ -215,7 +231,17 @@ public class PCM implements ConvertibleToJSONObject {
 		if (!(o instanceof PCM)) return false;
 		
 		PCM p = (PCM) o;
-		return p._id.equals(this._id) && p.name.equals(this.name) && p.featureIdGen == this.featureIdGen && p.productIdGen == this.productIdGen && p.description.equals(this.description) && p.license.equals(this.license) && p.source.equals(this.source) && p.author.equals(this.author) && p.primaryFeatureId.equals(this.primaryFeatureId) && p.features.equals(this.features) && p.products.equals(this.products);
+		return Objects.equals(p._id, this._id)
+				&& Objects.equals(p.name, this.name)
+				&& p.featureIdGen == this.featureIdGen
+				&& p.productIdGen == this.productIdGen
+				&& Objects.equals(p.description, this.description)
+				&& Objects.equals(p.license, this.license)
+				&& Objects.equals(p.source, this.source)
+				&& Objects.equals(p.author, this.author)
+				&& Objects.equals(p.primaryFeatureId, this.primaryFeatureId)
+				&& p.features.equals(this.features)
+				&& p.products.equals(this.products);
 	}
 	
 	@Override

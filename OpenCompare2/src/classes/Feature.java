@@ -1,5 +1,7 @@
 package classes;
 
+import java.util.Objects;
+
 import org.json.simple.JSONObject;
 
 public class Feature implements ConvertibleToJSONObject {
@@ -55,7 +57,9 @@ public class Feature implements ConvertibleToJSONObject {
 		if (!(o instanceof Feature)) return false;
 		
 		Feature f = (Feature) o;
-		return f.id.equals(this.id) && f.name.equals(this.name) && f.type.equals(this.type);
+		return Objects.equals(f.id, this.id)
+				&& Objects.equals(f.name, this.name)
+				&& Objects.equals(f.type, this.type);
 	}
 	
 	@Override

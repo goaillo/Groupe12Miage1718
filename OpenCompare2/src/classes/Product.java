@@ -1,6 +1,7 @@
 package classes;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -67,7 +68,8 @@ public class Product implements ConvertibleToJSONObject {
 		if (!(o instanceof Product)) return false;
 		
 		Product p = (Product) o;
-		return p.id.equals(this.id) && p.cells.equals(this.cells);
+		return Objects.equals(p.id, this.id)
+				&& p.cells.equals(this.cells);
 	}
 	
 	@Override
