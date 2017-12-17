@@ -248,6 +248,6 @@ public class PCM implements ConvertibleToJSONObject {
 	public String toString() {
 		System.err.println("ATTENTION : la représentation suivante n'est pas une représentation JSON de l'objet PCM. Elle permet juste une lecture facile des données de la PCM.\n");
 		
-		return "{\n\tid : " + _id + ",\n\tname : " + name + ",\n\tfeatureIdGen : " + Long.toString(featureIdGen) + ",\n\tproductIdGen : " + Long.toString(productIdGen) + ",\n\tdescription : " + description + ",\n\tlicense : " + license + ",\n\tsource : " + source + ",\n\tprimaryFeatureId : " + primaryFeatureId + ",\n\tfeatures : " + features + ",\n\tproducts : " + products + "\n}";
+		return "{\n\tid : " + _id + ",\n\tname : " + name + ",\n\tfeatureIdGen : " + Long.toString(featureIdGen) + ",\n\tproductIdGen : " + Long.toString(productIdGen) + ",\n\tdescription : " + description + ",\n\tlicense : " + license + ",\n\tsource : " + source + ",\n\tauthor : " + author + ",\n\tprimaryFeatureId : " + primaryFeatureId + ",\n\tfeatures : " + features + ",\n\tproducts : " + products + "\n}";
 	}
 }

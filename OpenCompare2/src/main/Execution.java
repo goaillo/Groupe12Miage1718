@@ -1,19 +1,27 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
+package main;
 import java.util.Scanner;
 
-import org.apache.commons.io.IOUtils;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
-import classes.*;
+import classes.PCMImporter;
+import classes.PCMParser;
 
 public class Execution {	
 	public static void main(String[] args) throws Exception {
+		String json = askImportMethod();
+
+		// Parsing du json en objet PCM
+        PCMParser p = new PCMParser(json);
+        p.transformToJavaObject();
+        
+        // Affichage de l'objet PCM sous un format facilement lisible par une personne
+        // Pour afficher le JSON correspondant à l'objet PCM, utiliser la fonction p.getPCMJavaObject().toJSONObject().toJSONString()
+        System.out.println(p.getPCMJavaObject());
+	}
+	
+	/**
+	 * Affiche un menu pour choisir un mode d'import de la représentation JSON d'une PCM et retourne ce JSON
+	 * @return le JSON importé
+	 */
+	public static String askImportMethod() {
 		// Affichage d'un menu de choix pour l'import de la PCM
 		System.out.println("Menu :");
 		System.out.println("1 - Importer depuis un fichier local");
@@ -55,17 +63,13 @@ public class Execution {
 			// Stockage du JSON dans la variable json
 			json = importer.importFromOpenCompare(pcmId);
 			break;
+		default:
+			break;
 		}
-
-		// Parsing du json en objet PCM
-        PCMParser p = new PCMParser(json);
-        p.transformToJavaObject();
-        
-        // Affichage de l'objet PCM sous un format facilement lisible par une personne
-        // Pour afficher le JSON correspondant à l'objet PCM, utiliser la fonction p.getPCMJavaObject().toJSONObject().toJSONString()
-        System.out.println(p.getPCMJavaObject());
-        
-        // Fermeture du scanner
+		
+		// Fermeture du scanner
 		sc.close();
+		
+		return json;
 	}
 }

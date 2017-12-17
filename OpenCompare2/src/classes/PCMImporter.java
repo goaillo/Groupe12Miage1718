@@ -3,16 +3,14 @@ package classes;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 
 import org.apache.commons.io.IOUtils;
 
 public class PCMImporter {
-	public String JsonParse(String fileName) {
+	/*public String JsonParse(String fileName) {
 		InputStream is;
 		String returnValue = "";
 		
@@ -26,7 +24,7 @@ public class PCMImporter {
 		}
 		
 		return returnValue;
-	}
+	}*/
 	
 	/**
 	 * @param file le fichier à importer (le fichier doit se trouver dans le dossier jsonFiles)
