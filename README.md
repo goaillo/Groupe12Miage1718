@@ -23,3 +23,6 @@ Then, you can use your PCM object however you want. Enjoy ;)
 
 ## Test
 Import the JSON representation of the PCM like in the main class. Then, if the PCM is not null, the object is converted to JSON which is reconverted to a PCM object. This operation is realised ten times and, each time a new PCM is created, the test checks if the new PCM equals to the original.
+
+## Authors
+BOISGONTIER Kévin, CAILLOT Alexis, CHERRIAUX Flavien, EONO Quentin & REBOURS Gaël, students in M1 MIAGE at the University of Rennes 1
